@@ -138,6 +138,27 @@ const englishTranslations = {
   footer_text: "© Talaani. Content, images, audio and design belong to Talaani unless stated otherwise.",
   footer_privacy: "Privacy",
   footer_games: "Games",
+  audio_dock_label: "Music controls",
+  audio_playlist: "Playlist",
+  audio_prev_label: "Previous track",
+  audio_next_label: "Next track",
+  audio_play_label: "Start music",
+  audio_status_off: "Music is off",
+  audio_toggle_enable: "Enable music",
+  consent_eyebrow: "Privacy notice",
+  consent_title: "A quick note before you start",
+  consent_text:
+    "This website is intentionally built to collect as little data as possible. No tracking or marketing cookies are used. When you access the site, technically necessary connection data may be processed by the hosting setup. If you confirm this notice, your confirmation is stored locally in your browser. External platforms such as Twitch or YouTube are only opened after you actively click a link.",
+  consent_accept: "Confirm",
+  consent_read_privacy: "Read privacy policy",
+  music_eyebrow: "Music",
+  music_title: "Do you want music while browsing?",
+  music_text:
+    "A small local playlist is available on this website. Music only plays if you explicitly enable it. You can change your decision at any time later via the player in the bottom right corner.",
+  music_accept: "Yes, turn it on",
+  music_decline: "No, thanks",
+  noscript_text:
+    "JavaScript is disabled. The website remains readable, but tab switching, music controls and some dynamic features are limited.",
 };
 
 const uiCopy = {
