@@ -11,8 +11,9 @@ const playlist = [
 ];
 
 const englishTranslations = {
+  meta_title: "Talaani | Gaming, Streams, Videos and Community",
   meta_description: "Talaani - personal website with info, games, socials and privacy details at a glance.",
-  meta_description_short: "Personal website with info, games, socials and privacy details at a glance.",
+  meta_description_short: "Gaming content, livestreams on Twitch and YouTube, game info, socials and contact options.",
   meta_image_alt: "Talaani banner",
   nav_label: "Main navigation",
   lang_label: "Language",
