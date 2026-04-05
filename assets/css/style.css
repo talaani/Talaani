@@ -199,16 +199,18 @@ button {
 }
 
 main {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-section);
   min-height: 0;
 }
 
 .content-stack {
   gap: calc(var(--space-section) + 0.2rem);
-  align-content: start;
   min-height: 0;
-  overflow: auto;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-right: 0.2rem;
   padding-bottom: clamp(6rem, 10vw, 8rem);
   scrollbar-width: thin;
