@@ -4,15 +4,15 @@ const musicPreferenceKey = "talaani-music-preference";
 const languagePreferenceKey = "talaani-language";
 
 const playlist = [
-  { src: "assets/audio/Talaani - All In.mp3", label: "All In" },
-  { src: "assets/audio/Talaani - Kami.mp3", label: "Kami" },
-  { src: "assets/audio/Talaani - Luminance.mp3", label: "Luminance" },
-  { src: "assets/audio/Talaani - Recall.mp3", label: "Recall" },
+  { src: "/assets/audio/Talaani - All In.mp3", label: "All In" },
+  { src: "/assets/audio/Talaani - Kami.mp3", label: "Kami" },
+  { src: "/assets/audio/Talaani - Luminance.mp3", label: "Luminance" },
+  { src: "/assets/audio/Talaani - Recall.mp3", label: "Recall" },
 ];
 
 const englishTranslations = {
   meta_title: "Talaani | Gaming, Streams, Videos and Community",
-  meta_description: "Talaani - personal website with info, games, socials and privacy details at a glance.",
+  meta_description: "Talaani is my personal creator hub with gaming content, livestreams on Twitch and YouTube, game highlights, socials and direct contact options.",
   meta_description_short: "Gaming content, livestreams on Twitch and YouTube, game info, socials and contact options.",
   meta_image_alt: "Talaani banner",
   nav_label: "Main navigation",
@@ -283,7 +283,16 @@ function applyTranslations(language) {
   document.querySelectorAll(".lang-switch-button").forEach((button) => {
     const isActive = button.dataset.lang === currentLanguage;
     button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
+
+    if (button.tagName === "A") {
+      if (isActive) {
+        button.setAttribute("aria-current", "page");
+      } else {
+        button.removeAttribute("aria-current");
+      }
+    } else {
+      button.setAttribute("aria-pressed", String(isActive));
+    }
   });
 
   updateAge();
@@ -291,6 +300,36 @@ function applyTranslations(language) {
 
 function initLocalization() {
   captureGermanBaseline();
+  const staticLocalization = document.body.dataset.localizationMode === "static";
+  const pageLanguage = document.documentElement.lang === "en" ? "en" : "de";
+
+  if (staticLocalization) {
+    currentLanguage = pageLanguage;
+    window.localStorage.setItem(languagePreferenceKey, currentLanguage);
+
+    document.querySelectorAll(".lang-switch-button").forEach((button) => {
+      const isActive = button.dataset.lang === currentLanguage;
+      button.classList.toggle("is-active", isActive);
+
+      if (button.tagName === "A") {
+        if (isActive) {
+          button.setAttribute("aria-current", "page");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+
+        button.addEventListener("click", () => {
+          window.localStorage.setItem(languagePreferenceKey, button.dataset.lang === "en" ? "en" : "de");
+        });
+      } else {
+        button.setAttribute("aria-pressed", String(isActive));
+      }
+    });
+
+    updateAge();
+    return;
+  }
+
   const storedLanguage = window.localStorage.getItem(languagePreferenceKey);
   applyTranslations(storedLanguage === "en" ? "en" : "de");
 

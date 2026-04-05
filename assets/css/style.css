@@ -235,6 +235,9 @@ button {
 }
 
 .lang-switch-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 2.45rem;
   min-height: 2.15rem;
   padding: 0.28rem 0.62rem;
