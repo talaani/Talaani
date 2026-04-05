@@ -113,6 +113,7 @@ function initMusicPlayer() {
   const musicDecline = document.getElementById("music-decline");
   const consentOverlay = document.getElementById("consent-overlay");
   const consentAccept = document.getElementById("consent-accept");
+  const consentReadPrivacy = document.getElementById("consent-read-privacy");
 
   if (
     !audio ||
@@ -127,7 +128,8 @@ function initMusicPlayer() {
     !musicAccept ||
     !musicDecline ||
     !consentOverlay ||
-    !consentAccept
+    !consentAccept ||
+    !consentReadPrivacy
   ) {
     return;
   }
@@ -136,6 +138,96 @@ function initMusicPlayer() {
   let hasLoadedTrack = false;
   let hasMusicPermission = false;
   let animationFrameId = 0;
+  let activeOverlay = null;
+  let restoreFocusElement = null;
+
+  const overlayFocusSelector = [
+    "button:not([disabled])",
+    "a[href]",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[tabindex]:not([tabindex='-1'])",
+  ].join(", ");
+
+  const getFocusableElements = (overlay) =>
+    [...overlay.querySelectorAll(overlayFocusSelector)].filter(
+      (element) => !element.hasAttribute("disabled") && !element.getAttribute("aria-hidden"),
+    );
+
+  const lockBody = () => {
+    document.body.classList.add("consent-locked");
+  };
+
+  const unlockBodyIfPossible = () => {
+    if (!document.querySelector(".consent-overlay.is-visible")) {
+      document.body.classList.remove("consent-locked");
+    }
+  };
+
+  const openOverlay = (overlay, triggerElement = document.activeElement) => {
+    if (!overlay) {
+      return;
+    }
+
+    if (activeOverlay && activeOverlay !== overlay) {
+      activeOverlay.classList.remove("is-visible");
+    }
+
+    restoreFocusElement = triggerElement instanceof HTMLElement ? triggerElement : null;
+    activeOverlay = overlay;
+    overlay.classList.add("is-visible");
+    lockBody();
+
+    const [firstFocusable] = getFocusableElements(overlay);
+    firstFocusable?.focus();
+  };
+
+  const closeOverlay = (overlay, returnFocus = true) => {
+    if (!overlay) {
+      return;
+    }
+
+    overlay.classList.remove("is-visible");
+
+    if (activeOverlay === overlay) {
+      activeOverlay = null;
+    }
+
+    unlockBodyIfPossible();
+
+    if (returnFocus && restoreFocusElement) {
+      restoreFocusElement.focus();
+    }
+  };
+
+  document.addEventListener("keydown", (event) => {
+    if (!activeOverlay || event.key !== "Tab") {
+      return;
+    }
+
+    const focusableElements = getFocusableElements(activeOverlay);
+
+    if (!focusableElements.length) {
+      event.preventDefault();
+      return;
+    }
+
+    const first = focusableElements[0];
+    const last = focusableElements[focusableElements.length - 1];
+    const current = document.activeElement;
+
+    if (event.shiftKey && current === first) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!event.shiftKey && current === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 
   const resetEqBars = () => {
     eqBars.forEach((bar, index) => {
@@ -205,8 +297,7 @@ function initMusicPlayer() {
 
   const playCurrent = async () => {
     if (!hasMusicPermission) {
-      musicOverlay.classList.add("is-visible");
-      document.body.classList.add("consent-locked");
+      openOverlay(musicOverlay);
       return;
     }
 
@@ -236,8 +327,7 @@ function initMusicPlayer() {
   };
 
   const closeMusicPrompt = () => {
-    musicOverlay.classList.remove("is-visible");
-    document.body.classList.remove("consent-locked");
+    closeOverlay(musicOverlay);
   };
 
   const maybeOpenMusicPrompt = () => {
@@ -253,8 +343,7 @@ function initMusicPlayer() {
       return;
     }
 
-    musicOverlay.classList.add("is-visible");
-    document.body.classList.add("consent-locked");
+    openOverlay(musicOverlay);
   };
 
   const togglePlayback = () => {
@@ -299,10 +388,30 @@ function initMusicPlayer() {
 
   consentAccept.addEventListener("click", () => {
     window.localStorage.setItem(consentKey, consentVersion);
-    consentOverlay.classList.remove("is-visible");
-    document.body.classList.remove("consent-locked");
+    closeOverlay(consentOverlay);
     maybeOpenMusicPrompt();
     updateStatus(false);
+  });
+
+  consentReadPrivacy.addEventListener("click", (event) => {
+    event.preventDefault();
+    closeOverlay(consentOverlay, false);
+    window.history.replaceState(null, "", "#privacy");
+    document.querySelectorAll(".page-section[data-view]").forEach((section) => {
+      section.hidden = section.dataset.view !== "privacy";
+    });
+    document.querySelectorAll('.site-nav a[href^="#"]').forEach((link) => {
+      const isActive = link.getAttribute("href") === "#privacy";
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+
+    const contentStack = document.querySelector(".content-stack");
+    contentStack?.scrollTo({ top: 0, behavior: "smooth" });
   });
 
   musicAccept.addEventListener("click", async () => {
@@ -320,8 +429,7 @@ function initMusicPlayer() {
   const hasAcceptedCurrentVersion = window.localStorage.getItem(consentKey) === consentVersion;
 
   if (!hasAcceptedCurrentVersion) {
-    consentOverlay.classList.add("is-visible");
-    document.body.classList.add("consent-locked");
+    openOverlay(consentOverlay, consentAccept);
   } else {
     maybeOpenMusicPrompt();
   }
