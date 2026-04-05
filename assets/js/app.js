@@ -335,6 +335,9 @@ function initMusicPlayer() {
 
     if (storedPreference === "yes") {
       hasMusicPermission = true;
+      window.setTimeout(() => {
+        playCurrent();
+      }, 0);
       return;
     }
 
