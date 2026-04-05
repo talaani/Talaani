@@ -3,35 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Talaani - persönlicher Webauftritt mit Infos, Games, Socials und Datenschutz auf einen Blick.">
+  <meta name="description" content="Talaani - persönlicher Webauftritt mit Infos, Games, Socials und Datenschutz auf einen Blick." data-i18n-attr="content:meta_description">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://talaani.de/">
   <meta property="og:title" content="Talaani">
-  <meta property="og:description" content="Persönlicher Webauftritt mit Infos, Games, Socials und Datenschutz auf einen Blick.">
+  <meta property="og:description" content="Persönlicher Webauftritt mit Infos, Games, Socials und Datenschutz auf einen Blick." data-i18n-attr="content:meta_description_short">
   <meta property="og:image" content="https://talaani.de/assets/images/talaani.png">
-  <meta property="og:image:alt" content="Banner von Talaani">
+  <meta property="og:image:alt" content="Banner von Talaani" data-i18n-attr="content:meta_image_alt">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Talaani">
-  <meta name="twitter:description" content="Persönlicher Webauftritt mit Infos, Games, Socials und Datenschutz auf einen Blick.">
+  <meta name="twitter:description" content="Persönlicher Webauftritt mit Infos, Games, Socials und Datenschutz auf einen Blick." data-i18n-attr="content:meta_description_short">
   <meta name="twitter:image" content="https://talaani.de/assets/images/talaani.png">
   <title>Talaani</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260405-4">
   <noscript><style>.page-section[hidden]{display:block!important}.content-stack{overflow:visible}body{overflow:auto}</style></noscript>
-  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/app.js?v=20260405-4"></script>
 </head>
 <body data-page="single">
   <div class="site-shell">
     <header class="site-header">
       <a class="brand" href="#start">Talaani</a>
-      <nav class="site-nav" aria-label="Hauptnavigation">
-        <a class="is-active" href="#start">Start</a>
-        <a href="#about">Über mich</a>
-        <a href="#games">Games</a>
-        <a href="#socials">Socials</a>
-        <a href="#privacy">Datenschutz</a>
+      <nav class="site-nav" aria-label="Hauptnavigation" data-i18n-attr="aria-label:nav_label">
+        <a class="is-active" href="#start" data-i18n="nav_start">Start</a>
+        <a href="#about" data-i18n="nav_about">Über mich</a>
+        <a href="#games" data-i18n="nav_games">Games</a>
+        <a href="#socials" data-i18n="nav_socials">Socials</a>
+        <a href="#privacy" data-i18n="nav_privacy">Datenschutz</a>
       </nav>
       <div class="header-tools">
-        <button class="button button-secondary audio-toggle" id="audio-toggle" type="button" aria-pressed="false">
+        <div class="lang-switch" role="group" aria-label="Sprache" data-i18n-attr="aria-label:lang_label">
+          <button class="lang-switch-button is-active" id="lang-de" type="button" data-lang="de" aria-pressed="true">DE</button>
+          <button class="lang-switch-button" id="lang-en" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="button button-secondary audio-toggle" id="audio-toggle" type="button" aria-pressed="false" data-i18n="audio_toggle_enable">
           Musik aktivieren
         </button>
       </div>
@@ -40,39 +44,39 @@
     <main class="content-stack">
       <section class="hero page-section" id="start" data-view="start">
         <div class="hero-copy hero-copy-floating">
-          <p class="eyebrow">Persönlicher Webauftritt</p>
-          <h1>Willkommen bei Talaani</h1>
-          <p class="hero-text">
+          <p class="eyebrow" data-i18n="start_eyebrow">Persönlicher Webauftritt</p>
+          <h1 data-i18n="start_title">Willkommen bei Talaani</h1>
+          <p class="hero-text" data-i18n="start_intro">
             Hier findest du meinen Creator-Auftritt mit allen wichtigen Infos und direkten Wegen zu meinen Kanälen.
             Inhaltlich bleibt alles bewusst offen: Gaming, Unterhaltung und eine angenehme Atmosphäre stehen im Mittelpunkt.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#socials">Zu meinen Socials</a>
-            <a class="button button-secondary" href="#games">Games entdecken</a>
+            <a class="button button-primary" href="#socials" data-i18n="start_button_socials">Zu meinen Socials</a>
+            <a class="button button-secondary" href="#games" data-i18n="start_button_games">Games entdecken</a>
           </div>
         </div>
       </section>
 
       <section class="panel panel-section page-section" aria-labelledby="start-overview" data-view="start">
         <div class="section-heading">
-          <p class="eyebrow">Kurzüberblick</p>
-          <h2 id="start-overview">Was dich hier erwartet</h2>
+          <p class="eyebrow" data-i18n="overview_eyebrow">Kurzüberblick</p>
+          <h2 id="start-overview" data-i18n="overview_title">Was dich hier erwartet</h2>
         </div>
         <div class="card-grid">
           <article class="info-card">
             <span class="card-index">01</span>
-            <h3>Streams</h3>
-            <p>Du findest meine Livestreams sowohl auf YouTube als auch auf Twitch. Schau mir bei den verschiedensten Spielen zu. Meistens wirst du mich im Verse finden.</p>
+            <h3 data-i18n="overview_streams_title">Streams</h3>
+            <p data-i18n="overview_streams_text">Du findest meine Livestreams sowohl auf YouTube als auch auf Twitch. Schau mir bei den verschiedensten Spielen zu. Meistens wirst du mich im Verse finden.</p>
           </article>
           <article class="info-card">
             <span class="card-index">02</span>
-            <h3>Videos</h3>
-            <p>Im Moment begrenzen sich meine Videos noch auf die Livestreams, aber mit der Zeit wird es auch Offlineprojekte geben, sobald ich mich ausreichend mit Videoschnitt beschäftigt habe.</p>
+            <h3 data-i18n="overview_videos_title">Videos</h3>
+            <p data-i18n="overview_videos_text">Im Moment begrenzen sich meine Videos noch auf die Livestreams, aber mit der Zeit wird es auch Offlineprojekte geben, sobald ich mich ausreichend mit Videoschnitt beschäftigt habe.</p>
           </article>
           <article class="info-card">
             <span class="card-index">03</span>
-            <h3>Meine Person</h3>
-            <p>Manchmal bin ich ruhiger als ich will, manchmal etwas direkter als ich sollte. Aber was soll schon passieren?!</p>
+            <h3 data-i18n="overview_person_title">Meine Person</h3>
+            <p data-i18n="overview_person_text">Manchmal bin ich ruhiger als ich will, manchmal etwas direkter als ich sollte. Aber was soll schon passieren?!</p>
           </article>
         </div>
       </section>
@@ -80,16 +84,16 @@
       <section class="page-section page-layout" id="about" data-view="about" hidden>
         <section class="panel panel-section">
           <div class="section-heading">
-            <p class="eyebrow">Über mich</p>
-            <h1>Wer hinter Talaani steckt</h1>
+            <p class="eyebrow" data-i18n="about_eyebrow">Über mich</p>
+            <h1 data-i18n="about_title">Wer hinter Talaani steckt</h1>
           </div>
           <div class="text-columns">
-            <p>
+            <p data-i18n-html="about_intro_1">
               Ich bin Talaani, gehe mit meinen <span id="current-age">34</span> Jahren rasant auf die Rente zu und verbringe den Großteil meiner Freizeit vor dem Rechner.
               Du wirst mich beim Zocken sehen, aber das ist bei Weitem nicht das einzige, was ich am PC mache. Ich schreibe Songs, beschäftige mich viel mit dem
               Thema KI und lerne gerade, wie man Videos richtig schneidet.
             </p>
-            <p>
+            <p data-i18n="about_intro_2">
               Inhaltlich bin ich, abseits von meinem Main Game, sehr breit gefächert. Mir machen viele verschiedene Genres Spaß, und es gibt nicht sehr viele,
               an denen ich gar kein Interesse habe. Zu den Dingen, die mich nicht interessieren, gehören vor allem Fußball, Rennspiele und Shooter wie Call of Duty.
             </p>
@@ -99,27 +103,27 @@
         <section class="card-grid card-grid-extended">
           <article class="panel info-card">
             <span class="card-index">01</span>
-            <h2>Was ich mache</h2>
-            <p>Streams decken bis jetzt noch mein gesamtes Portfolio ab. Später kommen dazu aber auch noch Videos und, wenn ich gute Ideen habe, vielleicht auch noch was anderes.</p>
+            <h2 data-i18n="about_card_1_title">Was ich mache</h2>
+            <p data-i18n="about_card_1_text">Streams decken bis jetzt noch mein gesamtes Portfolio ab. Später kommen dazu aber auch noch Videos und, wenn ich gute Ideen habe, vielleicht auch noch was anderes.</p>
           </article>
           <article class="panel info-card">
             <span class="card-index">02</span>
-            <h2>Wofür ich stehe</h2>
-            <p>Ich bin vor allem ein Verfechter von Authentizität. Wenn du eher ruhig bist, dann ist das in Ordnung. Ich bin kein Streamer, der sich den Mund fusselig redet, wenn keiner da ist, reagiere nicht unverhältnismäßig auf Dinge, die gar nicht so besonders sind, und spiele meinen Zuschauern nichts vor.</p>
+            <h2 data-i18n="about_card_2_title">Wofür ich stehe</h2>
+            <p data-i18n="about_card_2_text">Ich bin vor allem ein Verfechter von Authentizität. Wenn du eher ruhig bist, dann ist das in Ordnung. Ich bin kein Streamer, der sich den Mund fusselig redet, wenn keiner da ist, reagiere nicht unverhältnismäßig auf Dinge, die gar nicht so besonders sind, und spiele meinen Zuschauern nichts vor.</p>
           </article>
           <article class="panel info-card">
             <span class="card-index">03</span>
-            <h2>Was dich erwartet</h2>
-            <p>Das kommt stark darauf an, was ich gerade mache. Bei ruhigeren Games bin ich selbst auch eher ruhig, bei lustigen Spielen hörst du mich viel reden und manchmal auch Unfug quatschen, bei Taktik bin ich sehr konzentriert und achte manchmal nicht so sehr auf den Chat. Man könnte sagen, dass ich manchmal ein ganz schöner Schwitzer bin.</p>
+            <h2 data-i18n="about_card_3_title">Was dich erwartet</h2>
+            <p data-i18n="about_card_3_text">Das kommt stark darauf an, was ich gerade mache. Bei ruhigeren Games bin ich selbst auch eher ruhig, bei lustigen Spielen hörst du mich viel reden und manchmal auch Unfug quatschen, bei Taktik bin ich sehr konzentriert und achte manchmal nicht so sehr auf den Chat. Man könnte sagen, dass ich manchmal ein ganz schöner Schwitzer bin.</p>
           </article>
         </section>
 
         <section class="panel panel-section">
           <div class="section-heading">
-            <p class="eyebrow">Mein Ziel</p>
-            <h2>Ein Auftritt mit Persönlichkeit</h2>
+            <p class="eyebrow" data-i18n="about_goal_eyebrow">Mein Ziel</p>
+            <h2 data-i18n="about_goal_title">Ein Auftritt mit Persönlichkeit</h2>
           </div>
-          <p class="single-column-text">
+          <p class="single-column-text" data-i18n="about_goal_text">
             Mein Ziel, abgesehen davon, dass ich dein Follow haben will, ist vor allem eine gute Community. Ich suche nach freundlichen, erwachsenen Leuten,
             die nachdenken, bevor sie etwas sagen, und ihren gesunden Menschenverstand benutzen. Wir können gemeinsam zocken, wenn ich es anbiete, wir können
             quatschen, einfach ein bisschen abhängen - und das nicht nur zwischen dir und mir, sondern auch unter euch, meiner Community.
@@ -130,26 +134,26 @@
       <section class="page-section page-layout" id="games" data-view="games" hidden>
         <section class="panel panel-section">
           <div class="section-heading">
-            <p class="eyebrow">Games</p>
-            <h1>Genres und Spiele, die mich begleiten</h1>
+            <p class="eyebrow" data-i18n="games_eyebrow">Games</p>
+            <h1 data-i18n="games_title">Genres und Spiele, die mich begleiten</h1>
           </div>
-          <p class="single-column-text">
+          <p class="single-column-text" data-i18n="games_intro">
             Hier bekommst du einen Überblick darüber, welche Spiele und Genres meinen Content prägen. Klick auf eine Karte,
             um den jeweiligen Text aufzuklappen und mehr darüber zu erfahren.
           </p>
         </section>
 
-        <section class="games-grid" aria-label="Game-Auswahl">
+        <section class="games-grid" aria-label="Game-Auswahl" data-i18n-attr="aria-label:games_grid_label">
           <details class="game-card panel">
             <summary>
               <span class="card-index">01</span>
               <span class="game-title-wrap">
-                <span class="eyebrow">Main Game</span>
+                <span class="eyebrow" data-i18n="games_card_1_eyebrow">Main Game</span>
                 <span class="game-title">Star Citizen</span>
               </span>
             </summary>
             <div class="game-copy">
-              <p>
+              <p data-i18n="games_card_1_text">
                 Star Citizen ist eine riesige Space-Simulation, in der man sich in einem noch wachsenden Universum frei bewegt, Missionen annimmt,
                 Schiffe fliegt und ganz unterschiedliche Rollen einnehmen kann. Für mich liegt der Fokus dort vor allem auf Hauling und Medic-Stuff:
                 also Fracht transportieren, Leute aus schwierigen Situationen retten und genau die Art Gameplay erleben, die zwischen entspannt und
@@ -162,12 +166,12 @@
             <summary>
               <span class="card-index">02</span>
               <span class="game-title-wrap">
-                <span class="eyebrow">Genre</span>
-                <span class="game-title">Survival-Games</span>
+                <span class="eyebrow" data-i18n="games_card_2_eyebrow">Genre</span>
+                <span class="game-title" data-i18n="games_card_2_title">Survival-Games</span>
               </span>
             </summary>
             <div class="game-copy">
-              <p>
+              <p data-i18n="games_card_2_text">
                 Wenn es um Survival geht, denke ich zum Beispiel an DayZ als modernes Setting: rau, dreckig, unsicher und immer mit dem Gefühl,
                 dass hinter der nächsten Ecke etwas schieflaufen kann. Auf der anderen Seite steht mit Enshrouded ein Fantasy-Beispiel, das deutlich
                 mehr in die Richtung geht, die ich besonders mag. Mittelalter-Fantasy liegt mir insgesamt am meisten, aber manchmal ist auch gegen
@@ -180,12 +184,12 @@
             <summary>
               <span class="card-index">03</span>
               <span class="game-title-wrap">
-                <span class="eyebrow">Genre</span>
-                <span class="game-title">Shooter</span>
+                <span class="eyebrow" data-i18n="games_card_3_eyebrow">Genre</span>
+                <span class="game-title" data-i18n="games_card_3_title">Shooter</span>
               </span>
             </summary>
             <div class="game-copy">
-              <p>
+              <p data-i18n="games_card_3_text">
                 Wenn es um Shooter geht, ist Arma Reforger mein wichtigster Bezugspunkt. Das ist weniger ein schneller Arcade-Shooter und viel mehr
                 ein taktisches, militärisch geprägtes Erlebnis, bei dem Kommunikation, Übersicht und Zusammenarbeit entscheidend sind. Genau diese
                 Mischung aus Struktur, Spannung und Teamplay macht für mich den Reiz aus.
@@ -197,12 +201,12 @@
             <summary>
               <span class="card-index">04</span>
               <span class="game-title-wrap">
-                <span class="eyebrow">Erlebnis</span>
+                <span class="eyebrow" data-i18n="games_card_4_eyebrow">Erlebnis</span>
                 <span class="game-title">VR</span>
               </span>
             </summary>
             <div class="game-copy">
-              <p>
+              <p data-i18n="games_card_4_text">
                 Im VR-Bereich spiele ich die unterschiedlichsten Titel mit meinem HTC Vive Pro 2. Gerade in Virtual Reality fühlt sich vieles direkter,
                 intensiver und präsenter an als am normalen Bildschirm. Genau dieses Mittendrin-Gefühl macht VR für mich so besonders und sorgt dafür,
                 dass ich immer wieder Lust habe, verschiedene Erfahrungen auszuprobieren.
@@ -214,12 +218,12 @@
             <summary>
               <span class="card-index">05</span>
               <span class="game-title-wrap">
-                <span class="eyebrow">Genre</span>
-                <span class="game-title">Strategie</span>
+                <span class="eyebrow" data-i18n="games_card_5_eyebrow">Genre</span>
+                <span class="game-title" data-i18n="games_card_5_title">Strategie</span>
               </span>
             </summary>
             <div class="game-copy">
-              <p>
+              <p data-i18n="games_card_5_text">
                 Im Strategiebereich mag ich sehr unterschiedliche Formen von Planung und Aufbau. Anno steht für mich dabei für Wirtschaft, Wachstum
                 und eine schöne Mischung aus Ruhe und Komplexität. Satisfactory bringt den Reiz mit, Prozesse sauber zu planen und Produktionsketten
                 immer weiter zu optimieren. Shadows of Doubt ist auf eine andere Art spannend, weil dort Beobachtung, Schlussfolgern und strukturiertes
@@ -233,10 +237,10 @@
       <section class="page-section page-layout" id="socials" data-view="socials" hidden>
         <section class="panel panel-section">
           <div class="section-heading">
-            <p class="eyebrow">Meine Socials</p>
-            <h1>Direkt zu meinen Kanälen</h1>
+            <p class="eyebrow" data-i18n="socials_eyebrow">Meine Socials</p>
+            <h1 data-i18n="socials_title">Direkt zu meinen Kanälen</h1>
           </div>
-          <p class="single-column-text">
+          <p class="single-column-text" data-i18n="socials_intro">
             Wenn du live dabei sein oder meine Inhalte verfolgen möchtest, findest du hier die direkten Wege zu meinen Kanälen.
             Die Links führen erst nach deinem Klick auf die jeweiligen Plattformen.
           </p>
@@ -245,46 +249,57 @@
         <section class="social-grid">
           <article class="panel social-card">
             <div class="social-card-header">
-              <p class="eyebrow">Live</p>
+              <p class="eyebrow" data-i18n="social_twitch_eyebrow">Live</p>
               <h2>Twitch</h2>
             </div>
-            <p>Auf Twitch bin ich live. Dort stehen direkte Interaktion, spontane Momente und gemeinsame Erlebnisse im Vordergrund.</p>
-            <a class="button button-primary" href="https://www.twitch.tv/Talaani" target="_blank" rel="noopener noreferrer">Twitch besuchen</a>
+            <p data-i18n="social_twitch_text">Auf Twitch bin ich live. Dort stehen direkte Interaktion, spontane Momente und gemeinsame Erlebnisse im Vordergrund.</p>
+            <a class="button button-primary" href="https://www.twitch.tv/Talaani" target="_blank" rel="noopener noreferrer" data-i18n="social_twitch_button">Twitch besuchen</a>
           </article>
           <article class="panel social-card">
             <div class="social-card-header">
-              <p class="eyebrow">Live / On Demand</p>
+              <p class="eyebrow" data-i18n="social_youtube_eyebrow">Live / On Demand</p>
               <h2>YouTube</h2>
             </div>
-            <p>Auf YouTube findest du sowohl Livestreams als auch Videos, Highlights und ausgewählte Inhalte zum Anschauen, wann immer es für dich passt.</p>
-            <a class="button button-primary" href="https://www.youtube.com/@Talaani" target="_blank" rel="noopener noreferrer">YouTube besuchen</a>
+            <p data-i18n="social_youtube_text">Auf YouTube findest du sowohl Livestreams als auch Videos, Highlights und ausgewählte Inhalte zum Anschauen, wann immer es für dich passt.</p>
+            <a class="button button-primary" href="https://www.youtube.com/@Talaani" target="_blank" rel="noopener noreferrer" data-i18n="social_youtube_button">YouTube besuchen</a>
           </article>
           <article class="panel social-card">
             <div class="social-card-header">
-              <p class="eyebrow">Community</p>
+              <p class="eyebrow" data-i18n="social_discord_eyebrow">Community</p>
               <h2>Discord</h2>
             </div>
-            <p>Auf meinem Discord-Server kannst du mit mir und der Community quatschen, dich austauschen und mitbekommen, was gerade ansteht.</p>
-            <a class="button button-primary" href="https://discord.gg/snvKNAQ7gs" target="_blank" rel="noopener noreferrer">Discord beitreten</a>
+            <p data-i18n="social_discord_text">Auf meinem Discord-Server kannst du mit mir und der Community quatschen, dich austauschen und mitbekommen, was gerade ansteht.</p>
+            <a class="button button-primary" href="https://discord.gg/snvKNAQ7gs" target="_blank" rel="noopener noreferrer" data-i18n="social_discord_button">Discord beitreten</a>
           </article>
           <article class="panel social-card">
             <div class="social-card-header">
-              <p class="eyebrow">Voice</p>
+              <p class="eyebrow" data-i18n="social_ts_eyebrow">Voice</p>
               <h2>TeamSpeak</h2>
             </div>
-            <p>Wenn du lieber direkt per Voice dabei bist, findest du mich und Teile der Community auch auf meinem TeamSpeak-Server.</p>
-            <a class="button button-primary" href="ts3server://ts.talaani.de">TS verbinden</a>
+            <p data-i18n="social_ts_text">Wenn du lieber direkt per Voice dabei bist, findest du mich und Teile der Community auch auf meinem TeamSpeak-Server.</p>
+            <a class="button button-primary" href="ts3server://ts.talaani.de" data-i18n="social_ts_button">TS verbinden</a>
           </article>
+        </section>
+
+        <section class="panel panel-section contact-panel">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="contact_eyebrow">Kontakt</p>
+            <h2 data-i18n="contact_title">Business, Sponsoring oder Kooperationen</h2>
+          </div>
+          <p class="single-column-text" data-i18n="contact_text">
+            Wenn du mich wegen Sponsoring, Kooperationen oder anderen geschäftlichen Themen erreichen möchtest, schreib mir einfach direkt.
+          </p>
+          <a class="contact-mail" href="mailto:management@talaani.de">management@talaani.de</a>
         </section>
       </section>
 
       <section class="page-section page-layout" id="privacy" data-view="privacy" hidden>
         <section class="panel panel-section">
           <div class="section-heading">
-            <p class="eyebrow">Datenschutz</p>
-            <h1>Hinweise zur Datenverarbeitung</h1>
+            <p class="eyebrow" data-i18n="privacy_eyebrow">Datenschutz</p>
+            <h1 data-i18n="privacy_title">Hinweise zur Datenverarbeitung</h1>
           </div>
-          <p class="single-column-text">
+          <p class="single-column-text" data-i18n="privacy_intro">
             Der Schutz deiner Daten ist mir wichtig. Diese Website ist bewusst datensparsam aufgebaut und verwendet keine
             Tracking- oder Marketing-Cookies. Nachfolgend findest du die wichtigsten Hinweise dazu, welche Daten beim Besuch
             dieser Website verarbeitet werden können.
@@ -293,57 +308,57 @@
 
         <section class="privacy-stack">
           <article class="panel privacy-card">
-            <h2>1. Hosting der Website</h2>
-            <p>Diese Website wird als statische Website gehostet. Beim Aufruf der Seiten können durch den Hosting-Anbieter technisch notwendige Verbindungsdaten verarbeitet werden, um die Website bereitzustellen und die Sicherheit des Dienstes zu gewährleisten.</p>
+            <h2 data-i18n="privacy_card_1_title">1. Hosting der Website</h2>
+            <p data-i18n="privacy_card_1_text">Diese Website wird als statische Website gehostet. Beim Aufruf der Seiten können durch den Hosting-Anbieter technisch notwendige Verbindungsdaten verarbeitet werden, um die Website bereitzustellen und die Sicherheit des Dienstes zu gewährleisten.</p>
           </article>
           <article class="panel privacy-card">
-            <h2>2. Technisch verarbeitete Zugriffsdaten</h2>
-            <p>Zu den dabei möglicherweise verarbeiteten Daten gehören insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite oder Datei, Informationen zum verwendeten Browser und Betriebssystem, die Referrer-URL sowie technische Statusinformationen der Anfrage.</p>
+            <h2 data-i18n="privacy_card_2_title">2. Technisch verarbeitete Zugriffsdaten</h2>
+            <p data-i18n="privacy_card_2_text">Zu den dabei möglicherweise verarbeiteten Daten gehören insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite oder Datei, Informationen zum verwendeten Browser und Betriebssystem, die Referrer-URL sowie technische Statusinformationen der Anfrage.</p>
           </article>
           <article class="panel privacy-card">
-            <h2>3. Keine Tracking- oder Marketing-Cookies</h2>
-            <p>Auf dieser Website werden keine Tracking- oder Marketing-Cookies eingesetzt. Es werden außerdem keine externen Analyse-Tools verwendet, um dein Nutzungsverhalten auszuwerten.</p>
+            <h2 data-i18n="privacy_card_3_title">3. Keine Tracking- oder Marketing-Cookies</h2>
+            <p data-i18n="privacy_card_3_text">Auf dieser Website werden keine Tracking- oder Marketing-Cookies eingesetzt. Es werden außerdem keine externen Analyse-Tools verwendet, um dein Nutzungsverhalten auszuwerten.</p>
           </article>
           <article class="panel privacy-card">
-            <h2>4. Lokale Speicherung deiner Bestätigung</h2>
-            <p>Wenn du den Datenschutzhinweis auf dieser Website bestätigst, wird diese Information lokal in deinem Browser gespeichert. Zweck dieser Speicherung ist ausschließlich, den Hinweis bei einem erneuten Besuch nicht erneut anzeigen zu müssen.</p>
+            <h2 data-i18n="privacy_card_4_title">4. Lokale Speicherung deiner Bestätigung</h2>
+            <p data-i18n="privacy_card_4_text">Wenn du den Datenschutzhinweis auf dieser Website bestätigst, wird diese Information lokal in deinem Browser gespeichert. Zweck dieser Speicherung ist ausschließlich, den Hinweis bei einem erneuten Besuch nicht erneut anzeigen zu müssen.</p>
           </article>
           <article class="panel privacy-card">
-            <h2>5. Lokale Audio-Wiedergabe</h2>
-            <p>Diese Website enthält lokal eingebundene Audiodateien. Eine Wiedergabe findet ausschließlich statt, wenn du sie selbst aktiv startest. Dabei werden keine Audioinhalte von externen Diensten nachgeladen.</p>
+            <h2 data-i18n="privacy_card_5_title">5. Lokale Audio-Wiedergabe</h2>
+            <p data-i18n="privacy_card_5_text">Diese Website enthält lokal eingebundene Audiodateien. Eine Wiedergabe findet ausschließlich statt, wenn du sie selbst aktiv startest. Dabei werden keine Audioinhalte von externen Diensten nachgeladen.</p>
           </article>
           <article class="panel privacy-card">
-            <h2>6. Externe Links</h2>
-            <p>Diese Website enthält Links zu externen Plattformen, insbesondere zu Twitch und YouTube. Eine Datenübertragung an diese Plattformen erfolgt nicht automatisch beim Laden der Seite, sondern erst dann, wenn du einen entsprechenden Link aktiv anklickst.</p>
+            <h2 data-i18n="privacy_card_6_title">6. Externe Links</h2>
+            <p data-i18n="privacy_card_6_text">Diese Website enthält Links zu externen Plattformen, insbesondere zu Twitch und YouTube. Eine Datenübertragung an diese Plattformen erfolgt nicht automatisch beim Laden der Seite, sondern erst dann, wenn du einen entsprechenden Link aktiv anklickst.</p>
           </article>
           <article class="panel privacy-card">
-            <h2>7. Lokal eingebundene Schriftarten</h2>
-            <p>Die auf dieser Website verwendeten Schriftarten sind lokal eingebunden. Beim Laden der Website werden daher keine Schriftarten von externen Drittanbietern nachgeladen.</p>
+            <h2 data-i18n="privacy_card_7_title">7. Lokal eingebundene Schriftarten</h2>
+            <p data-i18n="privacy_card_7_text">Die auf dieser Website verwendeten Schriftarten sind lokal eingebunden. Beim Laden der Website werden daher keine Schriftarten von externen Drittanbietern nachgeladen.</p>
           </article>
           <article class="panel privacy-card">
-            <h2>8. Stand der Hinweise</h2>
-            <p>Diese Datenschutzhinweise bilden die aktuelle technische Umsetzung dieser Website ab. Sollten künftig weitere Funktionen, eingebettete Inhalte oder zusätzliche Dienste eingebunden werden, werden diese Hinweise entsprechend angepasst. Das gilt insbesondere für externe Einbindungen wie Embeds, Analyse-Tools, Widgets, fremdgehostete Schriftarten oder andere Dienste von Drittanbietern, die zusätzliche Datenverarbeitungen auslösen können.</p>
+            <h2 data-i18n="privacy_card_8_title">8. Stand der Hinweise</h2>
+            <p data-i18n="privacy_card_8_text">Diese Datenschutzhinweise bilden die aktuelle technische Umsetzung dieser Website ab. Sollten künftig weitere Funktionen, eingebettete Inhalte oder zusätzliche Dienste eingebunden werden, werden diese Hinweise entsprechend angepasst. Das gilt insbesondere für externe Einbindungen wie Embeds, Analyse-Tools, Widgets, fremdgehostete Schriftarten oder andere Dienste von Drittanbietern, die zusätzliche Datenverarbeitungen auslösen können.</p>
           </article>
           <article class="panel privacy-card">
-            <h2>9. Urheberrecht und Nutzungsrechte</h2>
-            <p>Die Inhalte dieser Website, insbesondere Texte, Bilder, Gestaltungselemente, Audioinhalte und sonstige bereitgestellte Medien, sind Eigentum von Talaani, sofern nicht anders angegeben. Eine Verwendung, Vervielfältigung, Bearbeitung oder Weitergabe ist ohne ausdrückliche vorherige Zustimmung nicht gestattet.</p>
+            <h2 data-i18n="privacy_card_9_title">9. Urheberrecht und Nutzungsrechte</h2>
+            <p data-i18n="privacy_card_9_text">Die Inhalte dieser Website, insbesondere Texte, Bilder, Gestaltungselemente, Audioinhalte und sonstige bereitgestellte Medien, sind Eigentum von Talaani, sofern nicht anders angegeben. Eine Verwendung, Vervielfältigung, Bearbeitung oder Weitergabe ist ohne ausdrückliche vorherige Zustimmung nicht gestattet.</p>
           </article>
         </section>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© Talaani. Inhalte, Bilder, Audio und Gestaltung sind, sofern nicht anders angegeben, Eigentum von Talaani.</p>
+      <p data-i18n="footer_text">© Talaani. Inhalte, Bilder, Audio und Gestaltung sind, sofern nicht anders angegeben, Eigentum von Talaani.</p>
       <div class="footer-links">
-        <a href="#privacy">Datenschutz</a>
-        <a href="#games">Games</a>
+        <a href="#privacy" data-i18n="footer_privacy">Datenschutz</a>
+        <a href="#games" data-i18n="footer_games">Games</a>
         <a href="https://www.twitch.tv/Talaani" target="_blank" rel="noopener noreferrer">Twitch</a>
         <a href="https://www.youtube.com/@Talaani" target="_blank" rel="noopener noreferrer">YouTube</a>
       </div>
     </footer>
   </div>
 
-  <div class="audio-dock panel" aria-label="Musiksteuerung">
+  <div class="audio-dock panel" aria-label="Musiksteuerung" data-i18n-attr="aria-label:audio_dock_label">
     <div class="audio-eq" aria-hidden="true">
       <span></span>
       <span></span>
@@ -371,52 +386,52 @@
       <span></span>
     </div>
     <div class="audio-meta">
-      <p class="eyebrow">Playlist</p>
-      <p class="audio-status" id="audio-status">Musik ist aus</p>
+      <p class="eyebrow" data-i18n="audio_playlist">Playlist</p>
+      <p class="audio-status" id="audio-status" data-i18n="audio_status_off">Musik ist aus</p>
     </div>
     <div class="audio-controls">
-      <button class="audio-control" id="audio-prev" type="button" aria-label="Vorheriger Track">‹</button>
-      <button class="audio-control audio-control-primary" id="audio-play" type="button" aria-label="Musik starten">▶</button>
-      <button class="audio-control" id="audio-next" type="button" aria-label="Nächster Track">›</button>
+      <button class="audio-control" id="audio-prev" type="button" aria-label="Vorheriger Track" data-i18n-attr="aria-label:audio_prev_label">&#8249;</button>
+      <button class="audio-control audio-control-primary" id="audio-play" type="button" aria-label="Musik starten" data-i18n-attr="aria-label:audio_play_label">&#9654;</button>
+      <button class="audio-control" id="audio-next" type="button" aria-label="Nächster Track" data-i18n-attr="aria-label:audio_next_label">&#8250;</button>
     </div>
     <audio id="playlist-player" preload="none"></audio>
   </div>
 
   <div class="consent-overlay" id="consent-overlay" role="dialog" aria-modal="true" aria-labelledby="consent-title">
     <div class="consent-panel panel">
-      <p class="eyebrow">Datenschutzhinweis</p>
-      <h2 id="consent-title">Ein kurzer Hinweis vor dem Start</h2>
-      <p>
+      <p class="eyebrow" data-i18n="consent_eyebrow">Datenschutzhinweis</p>
+      <h2 id="consent-title" data-i18n="consent_title">Ein kurzer Hinweis vor dem Start</h2>
+      <p data-i18n="consent_text">
         Diese Website ist bewusst datensparsam aufgebaut. Es werden keine Tracking- oder Marketing-Cookies verwendet.
         Beim Aufruf können technisch notwendige Verbindungsdaten durch das Hosting verarbeitet werden. Wenn du diesen Hinweis bestätigst,
         wird deine Bestätigung lokal in deinem Browser gespeichert. Externe Plattformen wie Twitch oder YouTube werden erst durch aktives
         Anklicken eines Links aufgerufen.
       </p>
       <div class="consent-actions">
-        <button class="button button-primary" id="consent-accept" type="button">Bestätigen</button>
-        <a class="button button-secondary" id="consent-read-privacy" href="#privacy">Datenschutz lesen</a>
+        <button class="button button-primary" id="consent-accept" type="button" data-i18n="consent_accept">Bestätigen</button>
+        <a class="button button-secondary" id="consent-read-privacy" href="#privacy" data-i18n="consent_read_privacy">Datenschutz lesen</a>
       </div>
     </div>
   </div>
 
   <div class="consent-overlay" id="music-overlay" role="dialog" aria-modal="true" aria-labelledby="music-title">
     <div class="consent-panel panel">
-      <p class="eyebrow">Musik</p>
-      <h2 id="music-title">Möchtest du beim Stöbern Musik hören?</h2>
-      <p>
+      <p class="eyebrow" data-i18n="music_eyebrow">Musik</p>
+      <h2 id="music-title" data-i18n="music_title">Möchtest du beim Stöbern Musik hören?</h2>
+      <p data-i18n="music_text">
         Auf dieser Website liegt eine kleine lokale Playlist bereit. Die Musik wird nur abgespielt, wenn du sie ausdrücklich aktivierst.
         Du kannst deine Entscheidung später jederzeit über den Player unten rechts ändern.
       </p>
       <div class="consent-actions">
-        <button class="button button-primary" id="music-accept" type="button">Ja, Musik an</button>
-        <button class="button button-secondary" id="music-decline" type="button">Nein, danke</button>
+        <button class="button button-primary" id="music-accept" type="button" data-i18n="music_accept">Ja, Musik an</button>
+        <button class="button button-secondary" id="music-decline" type="button" data-i18n="music_decline">Nein, danke</button>
       </div>
     </div>
   </div>
 
   <noscript>
     <div class="noscript-hint panel">
-      <p>JavaScript ist deaktiviert. Die Website bleibt lesbar, aber Reiterwechsel, Musiksteuerung und einige dynamische Funktionen sind eingeschränkt.</p>
+      <p data-i18n="noscript_text">JavaScript ist deaktiviert. Die Website bleibt lesbar, aber Reiterwechsel, Musiksteuerung und einige dynamische Funktionen sind eingeschränkt.</p>
     </div>
   </noscript>
 </body>
