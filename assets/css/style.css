@@ -136,7 +136,7 @@ button {
 .social-card,
 .privacy-card {
   border: 1px solid var(--line-soft);
-  background: var(--bg-panel);
+  background: linear-gradient(90deg, rgba(4, 10, 18, 0.82), rgba(4, 10, 18, 0.3));
   box-shadow: var(--shadow-main);
   backdrop-filter: blur(14px);
 }
@@ -152,6 +152,28 @@ button {
   inset: 10px;
   border: 1px solid rgba(121, 190, 255, 0.08);
   border-radius: inherit;
+  pointer-events: none;
+}
+
+.panel,
+.info-card,
+.social-card,
+.privacy-card {
+  overflow: hidden;
+}
+
+.panel::before,
+.info-card::before,
+.social-card::before,
+.privacy-card::before,
+.site-header::before,
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(121, 190, 255, 0.07), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%);
   pointer-events: none;
 }
 
@@ -241,17 +263,6 @@ main {
 
 .panel {
   border-radius: var(--radius-lg);
-}
-
-.panel::before,
-.site-header::before,
-.site-footer::before {
-  content: "";
-  position: absolute;
-  inset: auto 18px 0 18px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(121, 190, 255, 0.24), transparent);
-  pointer-events: none;
 }
 
 .hero {
@@ -404,7 +415,6 @@ main {
 .privacy-card {
   padding: 1.5rem;
   border-radius: var(--radius-md);
-  background: var(--bg-panel-strong);
   height: 100%;
 }
 
@@ -418,6 +428,24 @@ main {
   font-size: 0.94rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.panel > *:not(.hero-backdrop),
+.info-card > *,
+.social-card > *,
+.privacy-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.panel-section .section-heading,
+.info-card h2,
+.info-card h3,
+.social-card-header,
+.privacy-card h2,
+.game-title-wrap {
+  padding-left: 1rem;
+  border-left: 1px solid rgba(121, 190, 255, 0.34);
 }
 
 .page-layout {
