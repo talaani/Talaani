@@ -347,71 +347,187 @@ function initLocalization() {
 }
 
 function initSectionNavigation() {
-  const navLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
-  const links = [...document.querySelectorAll('a[href^="#"]')];
-  const sections = [...document.querySelectorAll(".page-section[data-view]")];
   const contentStack = document.querySelector(".content-stack");
+  const siteNav = document.querySelector(".site-nav");
+  const langSwitch = document.querySelector(".lang-switch");
+  const siteFooter = document.querySelector(".site-footer");
 
-  if (!links.length || !sections.length || !contentStack) {
+  if (!contentStack || !siteNav || !langSwitch || !siteFooter) {
     return;
   }
 
-  const validViews = [...new Set(sections.map((section) => section.dataset.view))];
+  const headTargets = [
+    { selector: 'meta[name="description"]', attr: "content" },
+    { selector: 'meta[name="robots"]', attr: "content" },
+    { selector: 'meta[name="author"]', attr: "content" },
+    { selector: 'meta[name="theme-color"]', attr: "content" },
+    { selector: 'link[rel="canonical"]', attr: "href" },
+    { selector: 'link[rel="alternate"][hreflang="de"]', attr: "href" },
+    { selector: 'link[rel="alternate"][hreflang="en"]', attr: "href" },
+    { selector: 'link[rel="alternate"][hreflang="x-default"]', attr: "href" },
+    { selector: 'meta[property="og:type"]', attr: "content" },
+    { selector: 'meta[property="og:url"]', attr: "content" },
+    { selector: 'meta[property="og:site_name"]', attr: "content" },
+    { selector: 'meta[property="og:locale"]', attr: "content" },
+    { selector: 'meta[property="og:locale:alternate"]', attr: "content" },
+    { selector: 'meta[property="og:title"]', attr: "content" },
+    { selector: 'meta[property="og:description"]', attr: "content" },
+    { selector: 'meta[property="og:image"]', attr: "content" },
+    { selector: 'meta[property="og:image:alt"]', attr: "content" },
+    { selector: 'meta[name="twitter:card"]', attr: "content" },
+    { selector: 'meta[name="twitter:title"]', attr: "content" },
+    { selector: 'meta[name="twitter:description"]', attr: "content" },
+    { selector: 'meta[name="twitter:image"]', attr: "content" },
+  ];
 
-  const setActiveLink = (view) => {
-    navLinks.forEach((link) => {
-      const isActive = link.getAttribute("href") === `#${view}`;
-      link.classList.toggle("is-active", isActive);
-      if (isActive) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-  };
+  const ldJsonSelector = 'script[type="application/ld+json"]';
 
-  const showView = (requestedView, shouldPushHash = false) => {
-    const view = validViews.includes(requestedView) ? requestedView : "start";
-
-    sections.forEach((section) => {
-      section.hidden = section.dataset.view !== view;
-    });
-
-    setActiveLink(view);
-
-    if (shouldPushHash) {
-      window.history.replaceState(null, "", `#${view}`);
+  const shouldHandleLink = (link) => {
+    if (!(link instanceof HTMLAnchorElement)) {
+      return false;
     }
 
-    contentStack.scrollTo({ top: 0, behavior: "smooth" });
+    const href = link.getAttribute("href");
+
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:") ||
+      href.startsWith("ts3server:")
+    ) {
+      return false;
+    }
+
+    if (link.target && link.target !== "_self") {
+      return false;
+    }
+
+    if (link.hasAttribute("download")) {
+      return false;
+    }
+
+    const url = new URL(link.href, window.location.href);
+
+    if (url.origin !== window.location.origin) {
+      return false;
+    }
+
+    return url.pathname.endsWith("/") || url.pathname.endsWith(".html");
   };
 
-  window.talaaniShowView = showView;
+  const syncHead = (nextDocument) => {
+    document.title = nextDocument.title;
+    document.documentElement.lang = nextDocument.documentElement.lang;
 
-  links.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const href = link.getAttribute("href");
+    headTargets.forEach(({ selector, attr }) => {
+      const current = document.head.querySelector(selector);
+      const next = nextDocument.head.querySelector(selector);
 
-      if (!href?.startsWith("#")) {
-        return;
+      if (current && next) {
+        current.setAttribute(attr, next.getAttribute(attr) ?? "");
       }
-
-      const targetView = href.slice(1);
-
-      if (!validViews.includes(targetView)) {
-        return;
-      }
-
-      event.preventDefault();
-      showView(targetView, true);
     });
+
+    const currentLdJson = document.head.querySelector(ldJsonSelector);
+    const nextLdJson = nextDocument.head.querySelector(ldJsonSelector);
+
+    if (currentLdJson && nextLdJson) {
+      currentLdJson.textContent = nextLdJson.textContent;
+    }
+  };
+
+  const syncShell = (nextDocument) => {
+    const nextNav = nextDocument.querySelector(".site-nav");
+    const nextLangSwitch = nextDocument.querySelector(".lang-switch");
+    const nextFooter = nextDocument.querySelector(".site-footer");
+    const nextMain = nextDocument.querySelector(".content-stack");
+
+    if (!nextNav || !nextLangSwitch || !nextFooter || !nextMain) {
+      throw new Error("Expected site shell parts are missing.");
+    }
+
+    siteNav.innerHTML = nextNav.innerHTML;
+    siteNav.setAttribute("aria-label", nextNav.getAttribute("aria-label") ?? siteNav.getAttribute("aria-label") ?? "");
+
+    langSwitch.innerHTML = nextLangSwitch.innerHTML;
+    langSwitch.setAttribute("aria-label", nextLangSwitch.getAttribute("aria-label") ?? langSwitch.getAttribute("aria-label") ?? "");
+
+    siteFooter.innerHTML = nextFooter.innerHTML;
+    contentStack.innerHTML = nextMain.innerHTML;
+
+    document.body.dataset.localizationMode = nextDocument.body.dataset.localizationMode ?? "static";
+    currentLanguage = document.documentElement.lang === "en" ? "en" : "de";
+    window.localStorage.setItem(languagePreferenceKey, currentLanguage);
+    updateAge();
+    document.dispatchEvent(new CustomEvent("talaani:language-change"));
+  };
+
+  const navigateToUrl = async (urlLike, { push = true } = {}) => {
+    const url = new URL(urlLike, window.location.href);
+
+    if (
+      push &&
+      `${url.pathname}${url.search}${url.hash}` === `${window.location.pathname}${window.location.search}${window.location.hash}`
+    ) {
+      return;
+    }
+
+    try {
+      const response = await window.fetch(url.toString(), {
+        headers: {
+          "X-Requested-With": "TalaaniNav",
+        },
+      });
+
+      if (!response.ok) {
+        window.location.href = url.toString();
+        return;
+      }
+
+      const html = await response.text();
+      const nextDocument = new DOMParser().parseFromString(html, "text/html");
+
+      syncHead(nextDocument);
+      syncShell(nextDocument);
+
+      if (push) {
+        window.history.pushState({ path: url.toString() }, "", url.toString());
+      }
+
+      contentStack.scrollTo({ top: 0, behavior: "auto" });
+    } catch {
+      window.location.href = url.toString();
+    }
+  };
+
+  window.talaaniNavigate = navigateToUrl;
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+
+    if (!shouldHandleLink(link)) {
+      return;
+    }
+
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    navigateToUrl(link.href);
   });
 
-  window.addEventListener("hashchange", () => {
-    showView(window.location.hash.slice(1));
+  window.addEventListener("popstate", () => {
+    navigateToUrl(window.location.href, { push: false });
   });
-
-  showView(window.location.hash.slice(1));
 }
 
 function initMusicPlayer() {
@@ -725,7 +841,13 @@ function initMusicPlayer() {
   consentReadPrivacy.addEventListener("click", (event) => {
     event.preventDefault();
     closeOverlay(consentOverlay, false);
-    window.talaaniShowView?.("privacy", true);
+    const privacyUrl = consentReadPrivacy.getAttribute("href") || (currentLanguage === "en" ? "/en/privacy.html" : "/privacy.html");
+    if (window.talaaniNavigate) {
+      window.talaaniNavigate(privacyUrl);
+      return;
+    }
+
+    window.location.href = privacyUrl;
   });
 
   musicAccept.addEventListener("click", async () => {
