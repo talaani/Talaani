@@ -451,7 +451,6 @@ main {
 }
 
 .card-grid,
-.card-grid-extended,
 .social-grid,
 .privacy-stack,
 .games-grid {
@@ -463,16 +462,11 @@ main {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.card-grid-extended {
+.about-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.card-grid-extended > :last-child {
-  grid-column: 1 / -1;
-}
-
-.social-grid,
-.privacy-stack {
+.social-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -569,8 +563,8 @@ main {
   border-color: rgba(150, 214, 255, 0.34);
 }
 
-.privacy-stack > :last-child {
-  grid-column: 1 / -1;
+.privacy-stack {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .privacy-card {
@@ -800,7 +794,6 @@ body.consent-locked {
   }
 
   .card-grid,
-  .card-grid-extended,
   .games-grid,
   .social-grid,
   .privacy-stack,
@@ -808,13 +801,11 @@ body.consent-locked {
     grid-template-columns: 1fr 1fr;
   }
 
-  .card-grid {
-    grid-template-columns: 1fr;
+  .about-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .card-grid-extended > :last-child,
-  .games-grid > :first-child,
-  .privacy-stack > :last-child {
+  .games-grid > :first-child {
     grid-column: 1 / -1;
   }
 }
@@ -870,17 +861,12 @@ body.consent-locked {
   }
 
   .text-columns,
-  .card-grid-extended,
+  .card-grid,
+  .about-grid,
   .games-grid,
   .social-grid,
   .privacy-stack {
     grid-template-columns: 1fr;
-  }
-
-  .card-grid-extended > :last-child,
-  .games-grid > :first-child,
-  .privacy-stack > :last-child {
-    grid-column: auto;
   }
 
   .hero-actions,
