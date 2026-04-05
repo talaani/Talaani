@@ -440,8 +440,9 @@ main {
 .games-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: 1.35rem;
+  gap: 2rem 1.8rem;
   align-items: start;
+  padding-top: 0.35rem;
 }
 
 .game-card {
