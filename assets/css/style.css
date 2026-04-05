@@ -255,10 +255,10 @@ main {
 }
 
 .hero {
-  min-height: clamp(430px, 64vw, 620px);
+  min-height: clamp(280px, 34vw, 360px);
   display: grid;
-  align-items: end;
-  padding: clamp(1.2rem, 2.8vw, 1.8rem) 0;
+  align-items: start;
+  padding: clamp(0.2rem, 0.8vw, 0.5rem) 0 0;
 }
 
 .panel-section {
@@ -280,6 +280,7 @@ main {
   border-left: 1px solid rgba(121, 190, 255, 0.34);
   background: linear-gradient(90deg, rgba(4, 10, 18, 0.82), rgba(4, 10, 18, 0.24));
   backdrop-filter: blur(4px);
+  margin-top: 0;
 }
 
 .hero-copy h1,
@@ -690,7 +691,7 @@ body.consent-locked {
   }
 
   .hero {
-    min-height: 460px;
+    min-height: 300px;
   }
 
   .social-grid {
