@@ -90,4 +90,22 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://talaani.de/impressum.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://talaani.de/impressum.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://talaani.de/en/imprint.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://talaani.de/" />
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://talaani.de/en/imprint.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://talaani.de/impressum.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://talaani.de/en/imprint.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://talaani.de/" />
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
